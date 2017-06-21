@@ -1,7 +1,5 @@
 package application;
 	
-import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,30 +34,30 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	private static Stage window;
-	private static int width, height;
-	private static Scene loginScene, applicationScene;
-	private static Button logInButton;
-	private static Label lUsername, lPassword;
-	private static TextField tfUsername;
-	private static PasswordField tfPassword;
-	private static final String USERNAME = "damian", PASSWORD = "12345";
+	private Stage window;
+	private int width, height;
+	private Scene loginScene, applicationScene;
+	private Button logInButton;
+	private Label lUsername, lPassword;
+	private TextField tfUsername;
+	private PasswordField tfPassword;
+	private final String USERNAME = "damian", PASSWORD = "12345";
 	
-	private static BorderPane mainLayout;
+	private BorderPane mainLayout;
 	
-	private static TreeView<String> excercises;
+	private TreeView<String> excercises;
 	
-	private static ExcerciseView excerciseView;
+	private ExcerciseView excerciseView;
 	
 	/*
 	 * Class to hold objects of ExcerciseView
 	 */
 	
-	private static CollectionOfExcercises shoulderExcercises;
-	private static CollectionOfExcercises chestExcercises;
-	private static CollectionOfExcercises backExcercises;
-	private static CollectionOfExcercises armsExcercises;
-	private static CollectionOfExcercises legsExcercises;
+	private CollectionOfExcercises shoulderExcercises;
+	private CollectionOfExcercises chestExcercises;
+	private CollectionOfExcercises backExcercises;
+	private CollectionOfExcercises armsExcercises;
+	private CollectionOfExcercises legsExcercises;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -88,7 +86,7 @@ public class Main extends Application {
 	 * Setting up the loginScene layout
 	 */
 	
-	public static Scene loginScene(){
+	public Scene loginScene(){
 		
 		BorderPane mainLayout = new BorderPane();
 		mainLayout.setPadding(new Insets(20, 20, 20, 20));
@@ -161,7 +159,7 @@ public class Main extends Application {
 	 * Setting up the applicationScene
 	 */
 	
-	public static Scene applicationScene(){
+	public Scene applicationScene(){
 		
 		mainLayout = new BorderPane();
 		
@@ -187,13 +185,13 @@ public class Main extends Application {
 	 * logInButton action
 	 */
 	
-	public static void logInButtonClicked(){
+	public void logInButtonClicked(){
 		
 		accessConditions();
 		
 	} // End of logInButtonClicked() method
 	
-	private static void closeProgram(){
+	private void closeProgram(){
 		
 		boolean answer = ConfirmBox.display("Exit", "Are you sure you want to exit?");
 		
@@ -205,7 +203,7 @@ public class Main extends Application {
 		
 	} // End of closeProgram() method
 	
-	public static void accessConditions(){
+	public void accessConditions(){
 		
 		String getUsername = tfUsername.getText();
 		String getPassword = tfPassword.getText();
@@ -227,7 +225,7 @@ public class Main extends Application {
 	 * Creates MenuBar
 	 */
 	
-	public static MenuBar menuBar(){
+	public MenuBar menuBar(){
 		
 		MenuBar menuBar = new MenuBar();
 		
@@ -260,7 +258,7 @@ public class Main extends Application {
 	 * Creates information and logout panel
 	 */
 	
-	public static HBox logoutPane(){
+	public HBox logoutPane(){
 		
 		String name = tfUsername.getText();
 		char firstChar = name.charAt(0);
@@ -283,7 +281,7 @@ public class Main extends Application {
 		
 	} // End of logoutPane() method
 	
-	public static VBox topLayout(){
+	public VBox topLayout(){
 		
 		VBox topLayout = new VBox();
 		
@@ -297,7 +295,7 @@ public class Main extends Application {
 	 * Action for logoutButton
 	 */
 	
-	public static void logOut(){
+	public void logOut(){
 		
 		boolean logout = ConfirmBox.display("Logout", "Are you sure you want to exit?");
 		
@@ -313,7 +311,7 @@ public class Main extends Application {
 	 * Creates a TreeView with excercises
 	 */
 	
-	public static StackPane excercisesPane(){
+	public StackPane excercisesPane(){
 		
 		/*
 		 * Parents
@@ -751,7 +749,7 @@ public class Main extends Application {
 	 * Creates branches to TreeView
 	 */
 	
-	public static TreeItem<String> makeBranch(String title, TreeItem<String> parent){
+	public TreeItem<String> makeBranch(String title, TreeItem<String> parent){
 		
 		TreeItem<String> item = new TreeItem<>(title);
 		item.setExpanded(true);
@@ -764,7 +762,7 @@ public class Main extends Application {
 	 * Creates a legendPane on the bottom of an app
 	 */
 	
-	public static HBox legendPane(){
+	public HBox legendPane(){
 		
 		HBox hBox = new HBox(10);
 		hBox.setPadding(new Insets(10, 10, 10, 10));
@@ -796,7 +794,7 @@ public class Main extends Application {
 	 * Creates a centerPane
 	 */
 	
-	public static VBox centerPane(int number, CollectionOfExcercises collection){
+	public VBox centerPane(int number, CollectionOfExcercises collection){
 		
 		VBox centerPane = new VBox(10);
 		centerPane.setAlignment(Pos.CENTER);
@@ -863,7 +861,7 @@ public class Main extends Application {
 		
 	} // End of centerPane() method
 	
-	public static void createExcercise(String name, int difficulty, CollectionOfExcercises parent, Image...images){
+	public void createExcercise(String name, int difficulty, CollectionOfExcercises parent, Image...images){
 		
 		ExcerciseView excerciseType = new ExcerciseView();
 		excerciseType.setNameOfExcercise(name);
@@ -874,7 +872,7 @@ public class Main extends Application {
 		
 	} // End of createExcercise(String name, int difficulty, CollectionOfExcercises parent, Image...images) method
 	
-	public static Image[] image(String...paths){
+	public Image[] image(String...paths){
 		
 		List<Image> imageList = new ArrayList<>();
 		
@@ -1528,7 +1526,7 @@ public class Main extends Application {
 	 * First center pane
 	 */
 	
-	public static StackPane firstCenterPane(){
+	public StackPane firstCenterPane(){
 		
 		Image theRock2 = new Image("resources/TheRock2.jpg");
 		ImageView viewTheRock2 = new ImageView();
